@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Sequelize, DataTypes } = require('sequelize');
-const AuthController = require('../controllers/AuthController');
+const AuthController = require('../controllers/authController');
 
 const sequelize = new Sequelize('eventApp', 'root', 'root', {
   host: 'db',
@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
     if (password !== confirmPassword) {
       return res.status(400).json({ message: 'Passwords do not match' });
     }
-    const result = await AuthController.register(email, password);
+    const result = await AuthController.registerUser(email, password);
     return res.status(201).json({ message: 'User registered successfully', data: result });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -45,7 +45,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const result = await AuthController.login(email, password);
+    const result = await AuthController.loginUser(email, password);
     return res.status(200).json({ message: 'Login successful', data: result });
   } catch (error) {
     return res.status(500).json({ message: error.message });
