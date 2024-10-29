@@ -1,4 +1,3 @@
-```javascript
 const express = require('express');
 const router = express.Router();
 const { Sequelize, DataTypes } = require('sequelize');
@@ -72,4 +71,3 @@ router.post('/facebook-signin', async (req, res) => {
 });
 
 module.exports = router;
-```
