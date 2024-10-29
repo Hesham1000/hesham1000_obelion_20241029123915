@@ -1,18 +1,18 @@
 const express = require('express');
 const mysql = require('mysql');
 const authRoutes = require('./routes/authRoutes');
-const profileRoutes = require('./routes/profileRoutes');
-const venueRoutes = require('./routes/venueRoutes');
-const vendorRoutes = require('./routes/vendorRoutes');
-const eventRoutes = require('./routes/eventRoutes');
-const paymentRoutes = require('./routes/paymentRoutes');
+// const profileRoutes = require('./routes/profileRoutes');
+// const venueRoutes = require('./routes/venueRoutes');
+// const vendorRoutes = require('./routes/vendorRoutes');
+// const eventRoutes = require('./routes/eventRoutes');
+// const paymentRoutes = require('./routes/paymentRoutes');
 
 const app = express();
 
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'db',
   user: 'agent',
   password: 'agentpass',
   database: 'Obelien AI'
@@ -27,11 +27,11 @@ db.connect((err) => {
 });
 
 app.use('/auth', authRoutes);
-app.use('/profile', profileRoutes);
-app.use('/venues', venueRoutes);
-app.use('/vendors', vendorRoutes);
-app.use('/events', eventRoutes);
-app.use('/payments', paymentRoutes);
+// app.use('/profile', profileRoutes);
+// app.use('/venues', venueRoutes);
+// app.use('/vendors', vendorRoutes);
+// app.use('/events', eventRoutes);
+// app.use('/payments', paymentRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

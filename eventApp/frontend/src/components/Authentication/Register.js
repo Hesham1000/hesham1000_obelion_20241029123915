@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../../styles/Register.css';
+import './Register.css';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const history = useHistory();
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -31,7 +30,7 @@ function Register() {
         },
       });
       if (response.status === 201) {
-        history.push('/login');
+        print("good")
       }
     } catch (err) {
       setError(err.response ? err.response.data.message : 'An error occurred');
@@ -64,7 +63,7 @@ function Register() {
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
+      <h2 className='form-title'>Register</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
