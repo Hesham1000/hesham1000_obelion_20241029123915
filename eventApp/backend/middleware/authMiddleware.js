@@ -1,4 +1,3 @@
-```javascript
 const jwt = require('jsonwebtoken');
 const Sequelize = require('sequelize');
 
@@ -57,4 +56,3 @@ const authMiddleware = {
 };
 
 module.exports = authMiddleware;
-```
