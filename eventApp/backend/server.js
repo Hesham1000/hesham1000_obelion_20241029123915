@@ -1,6 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
 const authRoutes = require('./routes/authRoutes');
+const cors = require('cors');
+
 // const profileRoutes = require('./routes/profileRoutes');
 // const venueRoutes = require('./routes/venueRoutes');
 // const vendorRoutes = require('./routes/vendorRoutes');
@@ -8,6 +10,8 @@ const authRoutes = require('./routes/authRoutes');
 // const paymentRoutes = require('./routes/paymentRoutes');
 
 const app = express();
+
+
 
 app.use(express.json());
 
@@ -25,6 +29,8 @@ db.connect((err) => {
   }
   console.log('Connected to the MySQL database.');
 });
+
+app.use(cors());
 
 app.use('/auth', authRoutes);
 // app.use('/profile', profileRoutes);
